@@ -1,6 +1,6 @@
 
 UTM Campaign Analysis Project
-📝 Problem Statement
+  Problem Statement
 
 The marketing team is running multiple campaigns across different channels (Black Friday, Webinar Promo, Google, LinkedIn, Facebook, Email, etc.). However, there is no clear visibility into:
 
@@ -133,7 +133,7 @@ Are we achieving the conversion target (20–45%)?
 
 Should we scale up or scale down any campaign?
 
-📌 Final Insights & Recommendations
+  Final Insights & Recommendations
 
 Scale Up: Webinar and Google campaigns — high revenue + strong conversion efficiency.
 
