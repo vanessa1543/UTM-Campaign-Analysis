@@ -74,7 +74,8 @@ UTM-Campaign-Analysis/
 Sample analysis performed in Jupyter Notebook:  
 ```python
 # Calculate conversion rate
-df["conversion_rate"] = (df["conversions"] / df["clicks"]) * 100
+df["conversion_rate"] = (df["conversions"] / df["clicks"]) * 100'
+```
 
 Example visualization:
 
