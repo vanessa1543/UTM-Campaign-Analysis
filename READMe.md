@@ -1,165 +1,133 @@
-
-UTM Campaign Analysis Project
-  Problem Statement
-
-The marketing team is running multiple campaigns across different channels (Black Friday, Webinar Promo, Google, LinkedIn, Facebook, Email, etc.). However, there is no clear visibility into:
-
-Which campaigns are driving the most revenue
-
-How effectively each campaign is converting clicks into conversions
-
-Whether the company is meeting its conversion rate targets
-
-This project analyzes campaign performance across Python, SQL, and Power BI, giving insights into the best-performing campaigns and opportunities for optimization.
-
-  Executive Summary (Jan–Jun 2024 UTM Campaign Performance)
-
-Campaigns delivered strong results with 76K clicks, 38K conversions, and $3.98M in revenue. The conversion rate (50.23%) exceeded the 45% target by 111%, showing efficient performance across channels.
-
-Top Drivers: Webinar campaigns, Google, and LinkedIn delivered the most value.
-
-Underperformers: Email and Facebook consistently lagged, suggesting the need for optimization or reduced investment.
-
-Efficiency: On average, each click generated $52.98 in revenue, confirming high-quality traffic and strong ROI potential.
-
-  Campaign Highlights
-
-Black Friday: Strong efficiency with a 54.9% conversion rate (target: 35%). Revenue growth was driven by Webinar and Google, though clicks and conversions were modest. Potential for scaling.
-
-Webinar Promo: Traffic and revenue improved, but conversion rate dipped slightly to 49.7% (still above target). Google was the main revenue driver, with Twitter and LinkedIn strengthening. Efficiency slipped, showing that scaling attracted some lower-quality traffic.
-
-  Pre-Analysis Questions
-
-Which campaign generated the highest revenue?
-
-Which campaign had the best conversion rate?
-
-Are we meeting our conversion rate target (20–45%)?
-
-How does revenue compare to conversion rate across campaigns?
-
-Which sources (email, social, search) brought in the most valuable traffic?
-
-🛠 Tools & Workflow
-
-Python (Pandas, Matplotlib) → Data cleaning & exploratory analysis
-
-SQL (MySQL Workbench) → Querying campaign performance metrics
-
-Power BI → Dashboard design, KPI tracking, and visualization
-
-Dataset Information
-
-This analysis uses anonymized UTM campaign data collected between January–June 2024.
-The dataset was structured from UTM campaign tracking logs, containing:
-
-Campaign – marketing campaign name (e.g., Black Friday, Webinar_Promo)
-
-Source – traffic source (Google, LinkedIn, Email, etc.)
-
-Clicks – number of ad/UTM link clicks
-
-Conversions – number of successful conversions
-
-Revenue – dollar value generated from the campaign
-
-Currency – standardized to USD
-
-  Python Analysis
-
-We started with Python for data cleaning, KPIs, and exploratory charts.
-
-Key Steps in Python:
-
-Imported and cleaned the dataset
-
-Calculated overall KPIs (total clicks, conversions, revenue, conversion rate)
-
-Grouped by campaign and source to analyze performance
-
-Visualized trends using bar charts and line plots
-
-Sample Python Charts (saved as images):
-
-Campaign revenue distribution
-
-Conversion rate by campaign
-
-Revenue vs. Clicks trend
-
-  SQL Analysis
-
-We used MySQL Workbench for deeper querying of campaign performance.
-
-Example SQL Queries:
-Total revenue per campaign:
-SELECT campaign, SUM(revenue) AS total_revenue
-FROM utm_campaigns
-GROUP BY campaign
-ORDER BY total_revenue DESC;
-
-Conversion rate by campaign:
-SELECT campaign,
-       SUM(conversions) / SUM(clicks) * 100 AS conversion_rate
-FROM utm_campaigns
-GROUP BY campaign;
-
-Power BI Dashboard
-
-Finally, we built an interactive dashboard in Power BI to track performance.
-
-
-### 1. Preview of Dashboard
-![UTM Campaign Dashboard](Campaign_Dashboard.png)
-Key Dashboard Features:
-
-KPIs: Total clicks, conversions, revenue, conversion rate vs. target
-
-Donut Chart: Revenue by campaign
-
-Line & Clustered Column Chart: Compare revenue and conversion rate per campaign
-
-KPI Visuals with Targets: Track whether campaigns met conversion goals
-
-Filters: Campaign and source drilldowns
-
-Business Questions addressed in Power BI:
-
-Which campaigns bring the most revenue?
-
-Which campaigns are most efficient (conversion rate)?
-
-Are we achieving the conversion target (20–45%)?
-
-Should we scale up or scale down any campaign?
-
-  Final Insights & Recommendations
-
-Scale Up: Webinar and Google campaigns — high revenue + strong conversion efficiency.
-
-Optimize or Reduce: Email and Facebook — underperforming with low ROI.
-
-Maintain Efficiency: Black Friday campaign shows potential for scaling.
-
-Monitor Conversion Quality: Scaling campaigns (like Webinar Promo) may bring lower-quality traffic, so quality checks are needed.
-
-Set Targets: Conversion rate target of 20–35% is realistic, but top campaigns can go beyond 50%.
-
- Visualizations From Python Analysis
-## 📊 Visualizations  
+# UTM Campaign Analysis Project  
+
+This project analyzes marketing campaign performance (Jan–Jun 2024) using **Python, SQL, and Power BI**.  
+The goal is to evaluate campaign effectiveness, identify revenue drivers, and optimize underperforming channels.  
+
+---
+
+## Problem Statement  
+Businesses often run multiple campaigns across different channels, but struggle to:  
+- Track performance across campaigns in a centralized way  
+- Understand which channels drive **revenue and conversions**  
+- Compare actual results against **targets**  
+- Make data-driven decisions for future campaign investments  
+
+This project answers those questions using a structured data analysis approach.  
+
+---
+
+## Pre-Analysis Questions  
+1. Which campaigns generated the highest **revenue**?  
+2. Which campaigns achieved the best **conversion rates**?  
+3. How do different sources (Google, LinkedIn, Email, etc.) perform?  
+4. Are we meeting or exceeding **conversion targets**?  
+5. Which campaigns should be scaled up or optimized?  
+
+---
+
+## Executive Summary (Jan–Jun 2024 UTM Campaign Performance)  
+- **Clicks:** 76K  
+- **Conversions:** 38K  
+- **Revenue:** $3.98M  
+- **Conversion Rate:** 50.23% (exceeded 45% target by +111%)  
+
+**Key Insights:**  
+- **Top Drivers:** Webinar campaigns, Google, and LinkedIn delivered the most value.  
+- **Underperformers:** Email and Facebook consistently lagged in both revenue and efficiency.  
+- **Black Friday Campaign:** Conversion efficiency was strong at 54.9% (well above 35% target).  
+- **Webinar Promo:** Revenue improved, though conversion rate dipped slightly (49.7%).  
+
+Each click generated an average of **$52.98 in revenue**, highlighting high-quality traffic and strong ROI potential.  
+
+---
+
+## Tools & Workflow  
+- **SQL** → Cleaned and aggregated campaign data  
+- **Python (Pandas, Matplotlib, Seaborn)** → Exploratory analysis and visualizations  
+- **Power BI** → Interactive dashboard and KPI tracking  
+
+---
+
+## Dataset Information  
+- **Period:** Jan–Jun 2024  
+- **Source:** UTM tracking data (campaigns, clicks, conversions, revenue)  
+- **Key Fields:** Campaign, Source, Clicks, Conversions, Revenue  
+
+---
+
+## Project Structure  
+UTM-Campaign-Analysis/
+│
+├── data/ # Raw & cleaned datasets
+├── sql/ # SQL queries used for aggregation & analysis
+│ └── campaign_analysis.sql
+├── python/ # Jupyter notebooks & scripts
+│ └── utm_tracking.ipynb
+├── dashboard/ # Power BI .pbix file and dashboard screenshots
+│ └── Campaign_Dashboard.png
+├── README.md # Project documentation
+└── requirements.txt # Python dependencies
+
+---
+
+## Python Analysis  
+Sample analysis performed in Jupyter Notebook:  
+```python
+# Calculate conversion rate
+df["conversion_rate"] = (df["conversions"] / df["clicks"]) * 100
+
+Example visualization:
 
 ### 1. Top 5 Campaigns by Revenue  
 ![Top Campaigns by Revenue](Top5_revenue.png)  
+  
 
-### 2. Top 5 Campaigns by Conversion Rate  
-![Top Campaigns by Conversion Rate](top5_conversions.png)  
-
-### 3. Device Performance  
+### 2. Device Performance  
 ![Device Performance](device_performance.png)  
 
-### 4. Source/Medium Performance  
+### 3. Source/Medium Performance  
 ![Source Medium](revenue.png)  
 
-### 5. Location × Device Heatmap  
-![Location Device Heatmap](Heatmap.png)  
+### 4. Location × Device Heatmap  
+![Location Device Heatmap](Heatmap.png) 
+
+## SQL Analysis 
+
+Sample SQL query used to group performance by campaign:
+SELECT 
+    campaign,
+    SUM(clicks) AS total_clicks,
+    SUM(conversions) AS total_conversions,
+    SUM(revenue) AS total_revenue,
+    (SUM(conversions)*1.0 / SUM(clicks)) * 100 AS conversion_rate
+FROM utm_campaigns
+GROUP BY campaign;
+
+## Power BI Dashboard 
+
+Finally, we built an interactive dashboard in Power BI to track campaign performance.
+
+### Preview of Dashboard
+![UTM Campaign Dashboard](Campaign_Dashboard.png)
+
+## Key Dashboard Features:
+
+**KPIs:** Total clicks, conversions, revenue, conversion rate vs. target
+
+**Donut Chart:** Revenue by campaign
+
+**Line & Clustered Column Chart:** Revenue and conversion rate per campaign
+
+**KPI Visuals with Targets:** Track whether campaigns met 20–35% conversion rate goals
+
+## Final Insights & Recommendations
+
+Focus investment on Webinar and Google campaigns – strong ROI and revenue growth.
+
+Optimize or scale down Email and Facebook campaigns – underperforming across all metrics.
+
+Adjust conversion targets upwards (20–35%) as current performance consistently exceeds benchmarks.
+
+Continue monitoring campaign efficiency to balance scaling with traffic quality
+ 
 
